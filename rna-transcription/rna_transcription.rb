@@ -25,7 +25,6 @@ class Complement
   private
 
   def self.nucleotide_complement(nucleotide)
-    raise ArgumentError unless NUCLEOTIDE_COMPLEMENT.keys.include?(nucleotide)
-    NUCLEOTIDE_COMPLEMENT[nucleotide]
+    NUCLEOTIDE_COMPLEMENT[nucleotide] || raise(ArgumentError)
   end
 end
