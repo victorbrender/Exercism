@@ -1,6 +1,8 @@
 class ArgumentError < StandardError; end
 
 class Hamming
+  VERSION = 1
+
   class << self
     def compute(first_strand, second_strand)
       check_inputs_have_same_length(first_strand, second_strand)
