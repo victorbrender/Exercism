@@ -1,5 +1,9 @@
+class ArgumentError < StandardError; end
+
 class Hamming
   def self.compute(first_strand, second_strand)
+    raise ArgumentError if first_strand.size != second_strand.size
+
     hamming_difference = 0
 
     (0..first_strand.size - 1).each do |i|
