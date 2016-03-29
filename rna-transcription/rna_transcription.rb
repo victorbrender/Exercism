@@ -1,12 +1,18 @@
 class Complement
   VERSION = 3
 
+  CYTOSINE = "C"
+  GUANINE  = "G"
+  THYMINE  = "T"
+  ADENINE  = "A"
+  URACIL   = "U"
+
   def self.of_dna(strand)
     case strand
-    when "G" then "C"
-    when "C" then "G"
-    when "T" then "A"
-    when "A" then "U"
+    when GUANINE then CYTOSINE
+    when CYTOSINE then GUANINE
+    when THYMINE then ADENINE
+    when ADENINE then URACIL
     end
   end
 end
