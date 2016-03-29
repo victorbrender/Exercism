@@ -7,12 +7,14 @@ class Complement
   ADENINE  = "A"
   URACIL   = "U"
 
+  DNA_COMPLEMET = {
+    GUANINE  => CYTOSINE,
+    CYTOSINE => GUANINE,
+    THYMINE  => ADENINE,
+    ADENINE  => URACIL
+  }
+
   def self.of_dna(strand)
-    case strand
-    when GUANINE then CYTOSINE
-    when CYTOSINE then GUANINE
-    when THYMINE then ADENINE
-    when ADENINE then URACIL
-    end
+    DNA_COMPLEMET[strand]
   end
 end
