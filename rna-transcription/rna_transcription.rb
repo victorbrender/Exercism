@@ -5,6 +5,8 @@ class Complement
     case strand
     when "G" then "C"
     when "C" then "G"
+    when "T" then "A"
+    when "A" then "U"
     end
   end
 end
