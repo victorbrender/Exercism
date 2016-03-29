@@ -1,3 +1,5 @@
+class ArgumentError < StandardError; end
+
 class Complement
   VERSION = 3
 
@@ -23,6 +25,7 @@ class Complement
   private
 
   def self.nucleotide_complement(nucleotide)
+    raise ArgumentError unless NUCLEOTIDE_COMPLEMENT.keys.include?(nucleotide)
     NUCLEOTIDE_COMPLEMENT[nucleotide]
   end
 end
