@@ -7,7 +7,7 @@ class Complement
   ADENINE  = "A"
   URACIL   = "U"
 
-  DNA_COMPLEMET = {
+  NUCLEOTIDE_COMPLEMENT = {
     GUANINE  => CYTOSINE,
     CYTOSINE => GUANINE,
     THYMINE  => ADENINE,
@@ -15,6 +15,14 @@ class Complement
   }
 
   def self.of_dna(strand)
-    DNA_COMPLEMET[strand]
+    strand.chars.map do |nucleotide|
+      nucleotide_complement(nucleotide)
+    end.join
+  end
+
+  private
+
+  def self.nucleotide_complement(nucleotide)
+    NUCLEOTIDE_COMPLEMENT[nucleotide]
   end
 end
