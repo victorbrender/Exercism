@@ -1,5 +1,3 @@
-class ArgumentError < StandardError; end
-
 class Complement
   VERSION = 3
 
