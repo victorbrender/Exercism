@@ -22,20 +22,6 @@ class Raindrops
   private
 
   def self.extract_prime_factors(number)
-    #this must be rewriten as a recursive method
-    result = []
-    prime_numbers = []
-    Prime.each(number) {|prime_number| prime_numbers << prime_number}
-
-    while !Prime.prime?(number) && number > 1 do
-      i = 0
-      while (number % prime_numbers[i] != 0) && i < prime_numbers.size do
-        i += 1
-      end
-      number = number / prime_numbers[i]
-      result << prime_numbers[i]
-    end
-
-    result << number
+    Prime::prime_division(number).map(&:first)
   end
 end
