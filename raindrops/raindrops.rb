@@ -12,11 +12,11 @@ class Raindrops
   def self.convert(number)
     prime_factorization = extract_prime_factors(number)
 
-    raindrop_speak = prime_factorization.uniq.map do |f|
+    raindrop_speak = prime_factorization.map do |f|
       RAINDROP_SPEAK[f]
     end.compact.join
 
-    (!raindrop_speak.empty? && raindrop_speak) || number.to_s
+    raindrop_speak.empty? ? number.to_s : raindrop_speak
   end
 
   private
