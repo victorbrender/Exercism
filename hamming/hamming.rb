@@ -1,5 +1,3 @@
-class ArgumentError < StandardError; end
-
 class Hamming
   VERSION = 1
 
