@@ -14,9 +14,7 @@ class Hamming
     end
 
     def calculate_hamming_difference(first_strand, second_strand)
-      (0..first_strand.size - 1).count do |i|
-        first_strand[i] != second_strand[i]
-      end
+      first_strand.chars.zip(second_strand.chars).count {|a,b| a != b}
     end
   end
 end
