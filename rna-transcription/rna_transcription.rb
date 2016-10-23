@@ -1,5 +1,8 @@
+module BookKeeping
+  VERSION = 4
+end
+
 class Complement
-  VERSION = 3
 
   CYTOSINE = "C"
   GUANINE  = "G"
@@ -7,22 +10,18 @@ class Complement
   ADENINE  = "A"
   URACIL   = "U"
 
-  NUCLEOTIDE_COMPLEMENT = {
+  DNA_COMPLEMENT = {
     GUANINE  => CYTOSINE,
     CYTOSINE => GUANINE,
     THYMINE  => ADENINE,
     ADENINE  => URACIL
   }
 
-  def self.of_dna(strand)
-    strand.chars.map do |nucleotide|
-      nucleotide_complement(nucleotide)
-    end.join
-  end
-
-  private
-
-  def self.nucleotide_complement(nucleotide)
-    NUCLEOTIDE_COMPLEMENT[nucleotide] || raise(ArgumentError)
+  class << self
+    def of_dna(strand)
+      strand.each_char.inject("") do |result, nucleotide|
+        result << (DNA_COMPLEMENT[nucleotide] || (return ""))
+      end
+    end
   end
 end
