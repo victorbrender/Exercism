@@ -1,21 +1,25 @@
-require 'byebug'
-
 class Sieve
   def initialize(target)
     @target = target
-    @primes = (2..@target).to_a
   end
 
   def primes
-    (2..@target).each do |base|
-      remove_multiples(base)
-    end
-    @primes
+    range_of_numbers - multiples_to_remove(range_of_numbers)
   end
 
-  def remove_multiples(base)
-    (base*2..@target).step(base) do |i|
-      @primes -= [i]
+  private
+
+  def range_of_numbers
+    @range_of_numbers ||= (2..@target).to_a
+  end
+
+  def multiples_to_remove(range_of_numbers)
+    range_of_numbers.inject([]) do |result, base|
+      result + multiples(base)
     end
+  end
+
+  def multiples(base)
+    (base*2..@target).step(base).collect {|i| i}
   end
 end
